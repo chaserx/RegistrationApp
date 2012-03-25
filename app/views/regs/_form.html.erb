@@ -1,0 +1,34 @@
+<%= simple_form_for(@reg, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :firstname %>
+    <%= f.input :lastname %>
+    <%= f.input :organization %>
+    <%= f.input :address1 %>
+    <%= f.input :address2 %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+    <%= f.input :phone %>
+    <%= f.input :email %>
+    <%= f.input :status %>
+    <%= f.input :dept %>
+    <%= f.input :eveningsession %>
+    <%= f.input :guest %>
+    <%= f.input :partysize %>
+    <%= f.input :lunch %>
+    <%= f.input :bizperson %>
+    <%= f.input :bizpersonemail %>
+    <%= f.input :bizpersonphone %>
+    <%= f.input :fees %>
+    <%= f.input :abstracttext %>
+    <%= f.input :abstracttitle %>
+    <%= f.input :abstractauthors %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
