@@ -1,0 +1,19 @@
+---
+Daily Report
+<%= Time.zone.now %>
+---
+
+
+Total Regisrations: <%= @registrations.size %>
+
+Lunch Count: <%= number_of_attendees_for_lunch %>
+
+Dinner Count: <%= number_of_attendees_for_dinner %>
+
+Abstract Count: <%= number_of_abstracts %>
+
+
+Registrations Today: 
+<% @latest.each do |e| %>
+	<%= firstname_and_lastname(e) %>
+<% end %>

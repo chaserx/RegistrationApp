@@ -1,9 +1,23 @@
 Registrationapp::Application.routes.draw do
-  devise_for :admins
+  resources :emailannouncements
+  match 'new_email' => 'emailannouncements#new'
+
+  get "superuser/index"
+  match 'superusers' => 'superuser#index'
+
+  resources :settings
+
+  resources :regs
 
   devise_for :users
 
   get "content/index"
+  get "content/privacy"
+  get "content/terms"
+
+  get "dashboard/index"
+  match 'dashboard' => 'dashboard#index', :as => 'user_root'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

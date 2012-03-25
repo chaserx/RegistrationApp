@@ -1,0 +1,25 @@
+<div class="row">
+<div class="span12">
+
+<h1>Your Symposium Registration(s)</h1> 
+
+<hr />
+<% if @regs.empty? %>
+	<p>Hi there, <%= current_user.email %>!<br />Looks like you need to register for the symposium.</p>
+	<p>
+		<%= link_to new_reg_path, :class => "btn btn-large" do %><i class="icon-plus"></i> Add Registration<%end%>
+	</p>
+<% else %>
+	<p>
+		<%= link_to new_reg_path, :class => "btn btn-large" do %><i class="icon-plus"></i> Add Registration<%end%>
+	</p>
+<% end %>
+
+<% @regs.each do |e| %> 
+
+<p>#<%= e.id %>: <%= link_to firstname_and_lastname(e), e %></p>
+
+<% end %>
+
+</div>
+</div>

@@ -51,6 +51,10 @@ Registrationapp::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'registrationapp.com' }
+  config.action_mailer.delivery_method = :simple_postmark
+  config.action_mailer.simple_postmark_settings = { api_key: '53d48202-0006-4e01-b8d5-d73826cec054' }
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
   # config.threadsafe!
@@ -65,4 +69,6 @@ Registrationapp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.cache_store = :dalli_store
 end

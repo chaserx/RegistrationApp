@@ -11,21 +11,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325001926) do
+ActiveRecord::Schema.define(:version => 20120505133848) do
 
-  create_table "admins", :force => true do |t|
-    t.string   "email",                             :default => "", :null => false
-    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
-    t.integer  "sign_in_count",                     :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.integer  "failed_attempts",                   :default => 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+  create_table "announcements", :force => true do |t|
+    t.text     "body"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emailannouncements", :force => true do |t|
+    t.text     "announcement_body"
+    t.boolean  "sent"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "subject"
+  end
+
+  create_table "regs", :force => true do |t|
+    t.string   "title"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "organization"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "status"
+    t.string   "dept"
+    t.boolean  "eveningsession",                                :default => false
+    t.boolean  "guest",                                         :default => false
+    t.integer  "partysize"
+    t.boolean  "lunch",                                         :default => false
+    t.string   "bizperson"
+    t.string   "bizpersonemail"
+    t.string   "bizpersonphone"
+    t.decimal  "fees",            :precision => 6, :scale => 2, :default => 0.0
+    t.text     "abstracttext"
+    t.string   "abstracttitle"
+    t.string   "abstractauthors"
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
+    t.string   "abstract"
+    t.integer  "user_id"
+  end
+
+  add_index "regs", ["created_at"], :name => "index_regs_on_created_at"
+
+  create_table "settings", :force => true do |t|
+    t.boolean  "reg_available", :default => true
+    t.datetime "dtstart"
+    t.datetime "dtend"
+    t.integer  "max_capacity"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -42,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20120325001926) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
+    t.boolean  "reminded",               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -9,12 +9,12 @@
 
 	<title>RegistrationApp</title>
 	<meta name="description" content="University Symposia Registration Software built by Cogitools">
-	<meta name="author" content="Cogitools Software">
+	<meta name="author" content="Chase Southard @ Cogitools Software">
 
 	<%= stylesheet_link_tag    "application", :media => "all" %>
-  	<%= javascript_include_tag "application" %>
-  	<%= csrf_meta_tags %>
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -31,12 +31,32 @@
           <div class="nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
+                <%= nav_link 'Dashboard', user_root_path %>
+                <% if user_signed_in? && current_user.admin? %>
+                  <%= nav_link 'Symposium Registrations', regs_path %>
+                  
+                  <li class="dropdown">
+                  <a href="#"
+                        class="dropdown-toggle"
+                        data-toggle="dropdown">
+                        Advanced
+                        <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <%= nav_link 'Settings', edit_setting_path(Setting.first.id) %>
+                    <%= nav_link 'Users', superusers_path %>
+                  </ul>
+                </li>
+                <% end %>
                 <li>
-                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
                 </li>
               <% else %>
                 <li>
                 <%= link_to('Login', new_user_session_path)  %>  
+                </li>
+                <li>
+                  <%= link_to('Sign up', new_user_registration_path)  %>  
                 </li>
               <% end %>
               <!-- <li class="active"><a href="#">Home</a></li>
@@ -49,28 +69,24 @@
     </div>
 
     <div class="container">
+      <%= announce Announcement.newest, :format => "bootstrap" %>
       <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">×</a>
         <%= msg %>
       </div>
-    <% end %>
-
-      <%= yield %>
+      <% end %>
+      
+        <%= yield %>
+      
 
       <hr>
 
       <footer>
-        <p>Brought to you by <a href="http://cogitools.com">Cogitools Software</a><br />Tools that think.</p>
+        <p>Brought to you by <a href="http://cogitools.com">Cogitools Software</a></p>
+        <p><%= link_to "Terms", content_terms_path %> | <%= link_to "Privacy Policy", content_privacy_path %></p>
       </footer>
 
     </div> <!-- /container -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
-<script src="js/libs/bootstrap/transition.js"></script>
-<script src="js/libs/bootstrap/collapse.js"></script>
-
-<script src="js/script.js"></script>
 </body>
 </html>

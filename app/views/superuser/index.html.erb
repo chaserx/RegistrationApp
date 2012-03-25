@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="span12">
+<h1>Super Users</h1>
+<table class="table table-striped table-bordered table-condensed">
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Registered?</th>
+            <th>Actions</th>
+          </tr>
+
+        <% @superusers.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= mail_to user.email %></td>
+            <td><%= user.admin? %></td>
+            <td><%= user.regs.present? %></td>
+            <td>#</td>
+          </tr>
+        <% end %>
+</table>
+
+<h1>Normal Users</h1>
+<table class="table table-striped table-bordered table-condensed">
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Registered?</th>
+            <th>Actions</th>
+          </tr>
+
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= mail_to user.email %></td>
+            <td><%= user.admin? %></td>
+            <td><%= user.regs.present? %></td>
+            <td>#</td>
+          </tr>
+        <% end %>
+</table>
+</div>
+</div>

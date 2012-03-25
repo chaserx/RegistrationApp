@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require announcements
 //= require twitter/bootstrap
 //= require modernizr
 //= require_tree .
