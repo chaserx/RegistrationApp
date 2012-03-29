@@ -1,6 +1,6 @@
-<h1>Listing regs</h1>
+<h1>Symposium Registrations</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Title</th>
     <th>Firstname</th>
@@ -65,5 +65,5 @@
 </table>
 
 <br />
-
-<%= link_to 'New Reg', new_reg_path %>
+<%# link_to 'ZIP FILE', regs_url(:zip) %>
+<%= link_to 'Download data (.csv)', regs_url(:csv) %> | <%= link_to 'New Reg', new_reg_path %>

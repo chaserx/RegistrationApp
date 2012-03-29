@@ -7,6 +7,9 @@ Registrationapp::Application.routes.draw do
 
   get "content/index"
 
+  #match 'dashboard' => 'user_dashboard#index', :as => 'user_root'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

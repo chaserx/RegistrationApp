@@ -1,8 +1,9 @@
-<%= simple_form_for(@reg, :html => {:class => "form-horizontal"}) do |f| %>
+<%= simple_form_for(@reg, :html => {:class => "form-horizontal", :multipart => true}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <h2>Basic Info</h2>
+    <%= f.input :title, :placeholder => "Dr." %>
     <%= f.input :firstname %>
     <%= f.input :lastname %>
     <%= f.input :organization %>
@@ -13,22 +14,20 @@
     <%= f.input :zip %>
     <%= f.input :phone %>
     <%= f.input :email %>
-    <%= f.input :status %>
+    <%= f.input :status, :collection => {"UK Faculty" => "UK Faculty", "Non-UK Faculty" => "Non-UK Faculty", "Post-doc" => "Post-doc", "Student" => "Student", "Staff" => "Staff"}.sort %>
     <%= f.input :dept %>
-    <%= f.input :eveningsession %>
-    <%= f.input :guest %>
-    <%= f.input :partysize %>
-    <%= f.input :lunch %>
-    <%= f.input :bizperson %>
-    <%= f.input :bizpersonemail %>
-    <%= f.input :bizpersonphone %>
-    <%= f.input :fees %>
-    <%= f.input :abstracttext %>
-    <%= f.input :abstracttitle %>
-    <%= f.input :abstractauthors %>
+    <%= f.input :bizperson, :label => "Business Person" %>
+    <%= f.input :bizpersonemail, :label => "Business Person Email" %>
+    <%= f.input :bizpersonphone, :label => "Business Person Phone" %>
+    <h2>Extra Info</h2>
+    <%= f.input :lunch, :as => :select, :label => "Trainee Lunch" %>
+    <%= f.input :eveningsession, :as => :select, :label => "Evening Session" %>
+    <%= f.input :guest, :as => :select, :label => "Guest for Evening Session" %>
+    <%= f.input :abstract, :as => :file %>
+    <%= f.input :abstract_cache, :as => :hidden %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Submit Registration", :disable_with => "Please wait. Registering..." %>
   </div>
 <% end %>

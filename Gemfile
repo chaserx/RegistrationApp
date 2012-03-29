@@ -11,7 +11,14 @@ gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'modernizr-rails'
 
+gem 'carrierwave'
+
 gem 'devise'
+
+gem 'fog'
+
+# gem 'zipruby'
+gem 'rubyzip'
 
 # Gems used only for assets and not required
 # in production environments by default.

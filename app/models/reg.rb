@@ -19,11 +19,14 @@ class Reg < ActiveRecord::Base
                   :bizperson,
                   :bizpersonemail,
                   :bizpersonphone,
-                  :abstracttitle,
-                  :abstracttext,
-                  :abstractauthors
+                  :abstract, 
+                  :abstract_cache,
+                  :remote_abstract_url
   
+  belongs_to :user
   
+  mount_uploader :abstract, AbstractUploader
+
   # has_attached_file :abstract, :storage => :s3, :s3_credentials => "#{Rails.root.to_s}/config/s3.yml", :path => "/:style/:filename"
   
   # validates_attachment_content_type :abstract, :content_type => ['application/msword', 'application/pdf', 'application/x-unknown-application-pdf', 'text/plain', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/richtext'], :on => :create, :unless => Proc.new { |registrant| registrant.abstract_file_name.nil? }
@@ -46,19 +49,25 @@ class Reg < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates_uniqueness_of :email, :on => :create, :message => "already submitted; must be unique"
   
+  validates_presence_of :city
+  validates_presence_of :address1
+  validates_presence_of :zip
+
   #validating state abbreviation  
+  validates_presence_of :state
   validates_length_of :state, :maximum => 2, :on => :create, :message => "can only be two letters"
   validates_format_of :state, :with => /[A-Z]{2}/, :on => :create, :message => "must use capital letters"
   
   #validating phone
+  validates_presence_of :phone, :message => "can't be blank"
   validates_format_of :phone, :on => :create, :with => /^[+\/\-() 0-9]+$/, :if => :valid_phone?, :message => 'is an invalid phone number, only the following characters are allowed: 0-9/-()+'
   
   #validating evening session
-  validates_presence_of :eveningsession, :on => :create, :message => ": Please make your selection: Will you attend the evening session?"
-  validates_presence_of :guest, :on => :create, :if => Proc.new {|registrant| registrant.eveningsession?}, :message => ": If you are attending the evening session, will you bring a guest?"
+  #validates_presence_of :eveningsession, :on => :create, :message => ": Please make your selection: Will you attend the evening session?"
+  #validates_presence_of :guest, :on => :create, :if => Proc.new {|registrant| registrant.eveningsession?}, :message => ": If you are attending the evening session, will you bring a guest?"
   
   #validating lunch
-  validates_presence_of :lunch, :on => :create, :message => ": Please make your selection. Will you attend the Trainee Lunch?"
+  #validates_presence_of :lunch, :on => :create, :message => ": Please make your selection. Will you attend the Trainee Lunch?"
   
   #validating bizperson
   validates_confirmation_of :bizpersonemail, :on => :create
@@ -82,8 +91,6 @@ class Reg < ActiveRecord::Base
   end
   
  
-  
-  private
     def capitalize_names
       self.firstname.capitalize!
       if self.lastname.include? "-"
@@ -105,13 +112,24 @@ class Reg < ActiveRecord::Base
     end
     
     def set_party_size
-      if self.eveningsession? && self.guest?
-        self.partysize = 2
-      elsif self.eveningsession? && self.guest == 0
-        self.partysize = 1
+      #default to 0
+      self.partysize = 0
+      if self.eveningsession?
+        self.partysize += 1
+        if self.guest?
+          self.partysize += 1
+        end
       else
-        self.partysize = 0
+        self.partysize -= 1
       end
+
+      # if self.eveningsession == 1 && self.guest == 1
+      #   self.partysize += 2
+      # elsif self.eveningsession == 1 && self.guest == 0
+      #   self.partysize += 1
+      # else
+      #   self.partysize = 0
+      # end
     end
     
     def set_fees
