@@ -5,8 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Admin.create( 
-  :email                		=> 'admin@example.com', 
-  :password   					=> 'password',
-  :password_confirmation        => 'password'
+User.create( 
+  :email                		=> 'chase.southard@cogitools.com', 
+  :password   					=> 'r3g4pp!',
+  :password_confirmation        => 'r3g4pp!'
 ) 
+
+User.where(:email => 'chase.southard@cogitools.com').first.update_attribute :admin, true
+
+Setting.create(
+  :reg_available => true,
+  :dtstart => "2012-04-02 00:00:00 -0400",
+  :dtend => "2012-05-17 18:00:00 -0400",
+  :max_capacity => 200
+)

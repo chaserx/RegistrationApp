@@ -74,6 +74,9 @@ class Reg < ActiveRecord::Base
   
   #validating status
   validates_presence_of :status, :on => :create, :message => "Error. Please select a status below"
+
+  validates :organization, :presence => true
+  validates :dept, :presence => true
   
   def valid_phone?
     error_message = 'is an invalid phone number, must contain at least 5 digits'

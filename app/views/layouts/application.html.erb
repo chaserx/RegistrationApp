@@ -9,7 +9,7 @@
 
 	<title>RegistrationApp</title>
 	<meta name="description" content="University Symposia Registration Software built by Cogitools">
-	<meta name="author" content="Cogitools Software">
+	<meta name="author" content="Chase Southard @ Cogitools Software">
 
 	<%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -31,12 +31,20 @@
           <div class="nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
+                <%= nav_link 'Dashboard', user_root_path %>
+                <% if user_signed_in? && current_user.admin? %>
+                  <%= nav_link 'Symposium Registrations', regs_path %>
+                  <%= nav_link 'Settings', edit_setting_path(Setting.first.id) %>
+                <% end %>
                 <li>
                 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
                 </li>
               <% else %>
                 <li>
                 <%= link_to('Login', new_user_session_path)  %>  
+                </li>
+                <li>
+                  <%= link_to('Sign up', new_user_registration_path)  %>  
                 </li>
               <% end %>
               <!-- <li class="active"><a href="#">Home</a></li>
@@ -55,13 +63,15 @@
         <%= msg %>
       </div>
     <% end %>
-
-      <%= yield %>
+      
+        <%= yield %>
+      
 
       <hr>
 
       <footer>
-        <p>Brought to you by <a href="http://cogitools.com">Cogitools Software</a><br />Tools that think.</p>
+        <p>Brought to you by <a href="http://cogitools.com">Cogitools Software</a></p>
+        <p><%= link_to "Terms", content_terms_path %> | <%= link_to "Privacy Policy", content_privacy_path %></p>
       </footer>
 
     </div> <!-- /container -->

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reg available:</b>
+  <%= @setting.reg_available %>
+</p>
+
+<p>
+  <b>Dtstart:</b>
+  <%= @setting.dtstart %>
+</p>
+
+<p>
+  <b>Dtend:</b>
+  <%= @setting.dtend %>
+</p>
+
+<p>
+  <b>Max capacity:</b>
+  <%= @setting.max_capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>

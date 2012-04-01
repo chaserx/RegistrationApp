@@ -2,8 +2,13 @@
       <div class="hero-unit">
         <h1>University of Kentucky<br />31<sup>st</sup> Annual Symposium for Reproductive Science<br /> and Women's Health</h1>
         <p>Each spring the Forum sponsors the University of Kentucky Symposium in Reproductive Science and Women's Health. Its purpose is to bring faculty, clinicians, and trainees in the field of reproductive sciences together to exchange ideas and information with each other and with recognized leaders of the reproductive sciences research community. </p>
-        <p><a class="btn btn-primary btn-large" href="http://www.mc.uky.edu/obg/Forum/symposium.html">Learn more &raquo;</a></p>
-        <p><a href="#" class="btn btn-large disabled">Registration Open: April 2, 2012</a></p>
+        <p><a class="btn btn-primary btn-large" href="http://www.mc.uky.edu/obg/Forum/symposium.html">Learn More <i class="icon-white icon-chevron-right"></i></a></p>
+    
+            <% if Setting.first.reg_available? %>
+              <%= raw render partial: "open_button" %>
+            <% else %>
+              <%= raw render partial: "closed_button" %>
+            <% end %>
       </div>
 
       <!-- Example row of columns -->

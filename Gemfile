@@ -17,8 +17,14 @@ gem 'devise'
 
 gem 'fog'
 
-# gem 'zipruby'
-gem 'rubyzip'
+#gem 'zipruby'
+#gem 'rubyzip'
+
+gem 'mail'
+#gem 'postmark-rails', '>=0.4.1'
+gem 'simple_postmark'
+
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,6 +39,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :production do
+  gem 'thin'
+  gem 'dalli'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

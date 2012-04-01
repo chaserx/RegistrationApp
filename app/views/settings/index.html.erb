@@ -1,0 +1,29 @@
+<h1>Listing settings</h1>
+
+<table>
+  <tr>
+    <th>Reg available</th>
+    <th>Dtstart</th>
+    <th>Dtend</th>
+    <th>Max capacity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @settings.each do |setting| %>
+  <tr>
+    <td><%= setting.reg_available %></td>
+    <td><%= setting.dtstart %></td>
+    <td><%= setting.dtend %></td>
+    <td><%= setting.max_capacity %></td>
+    <td><%= link_to 'Show', setting %></td>
+    <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
+    <td><%= link_to 'Destroy', setting, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Setting', new_setting_path %>

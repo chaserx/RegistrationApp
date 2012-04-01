@@ -1,0 +1,14 @@
+<%= simple_form_for(@setting, :html => {:class => "form-vertical"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :reg_available, :label => "Registration Available?", :as => :select %>
+    <%# f.input :dtstart, :label => "Registration Available from:", :disabled => true %>
+    <%# f.input :dtend, :label => "Registration Available to:", :disabled => true %>
+    <%# f.input :max_capacity, :label => "Maximum Capacity for Event", :disabled => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update Settings" %>
+  </div>
+<% end %>

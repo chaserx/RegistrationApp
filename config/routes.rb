@@ -1,4 +1,6 @@
 Registrationapp::Application.routes.draw do
+  resources :settings
+
   resources :regs
 
   devise_for :admins
@@ -6,8 +8,11 @@ Registrationapp::Application.routes.draw do
   devise_for :users
 
   get "content/index"
+  get "content/privacy"
+  get "content/terms"
 
-  #match 'dashboard' => 'user_dashboard#index', :as => 'user_root'
+  get "dashboard/index"
+  match 'dashboard' => 'dashboard#index', :as => 'user_root'
 
 
   # The priority is based upon order of creation:

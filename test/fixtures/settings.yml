@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reg_available: false
+  dtstart: 2012-04-01 13:46:23
+  dtend: 2012-04-01 13:46:23
+  max_capacity: 1
+
+two:
+  reg_available: false
+  dtstart: 2012-04-01 13:46:23
+  dtend: 2012-04-01 13:46:23
+  max_capacity: 1

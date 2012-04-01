@@ -27,7 +27,7 @@ module Registrationapp
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Eastern Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -58,5 +58,8 @@ module Registrationapp
 
     # added from devise for heroku deploy
     config.assets.initialize_on_precompile = false
+
+    config.action_mailer.delivery_method = :simple_postmark
+    config.action_mailer.simple_postmark_settings = { api_key: '53d48202-0006-4e01-b8d5-d73826cec054' }
   end
 end

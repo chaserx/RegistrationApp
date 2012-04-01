@@ -1,125 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+<div class="span12">
 
-<p>
-  <b>Title:</b>
-  <%= @reg.title %>
-</p>
+<p><%= link_to user_root_url, :class => "btn btn-mini" do %><i class="icon-arrow-left"></i> Back <%end%> <%= link_to edit_reg_path, :class => "btn btn-mini" do %><i class="icon-pencil"></i> Edit Registration <%end%></p>
 
-<p>
-  <b>Firstname:</b>
-  <%= @reg.firstname %>
-</p>
-
-<p>
-  <b>Lastname:</b>
-  <%= @reg.lastname %>
-</p>
-
-<p>
-  <b>Organization:</b>
-  <%= @reg.organization %>
-</p>
-
-<p>
-  <b>Address1:</b>
-  <%= @reg.address1 %>
-</p>
-
-<p>
-  <b>Address2:</b>
-  <%= @reg.address2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @reg.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @reg.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @reg.zip %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @reg.phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @reg.email %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @reg.status %>
-</p>
-
-<p>
-  <b>Dept:</b>
-  <%= @reg.dept %>
-</p>
-
-<p>
-  <b>Eveningsession:</b>
-  <%= @reg.eveningsession %>
-</p>
-
-<p>
-  <b>Guest:</b>
-  <%= @reg.guest %>
-</p>
-
-<p>
-  <b>Partysize:</b>
-  <%= @reg.partysize %>
-</p>
-
-<p>
-  <b>Lunch:</b>
-  <%= @reg.lunch %>
-</p>
-
-<p>
-  <b>Bizperson:</b>
-  <%= @reg.bizperson %>
-</p>
-
-<p>
-  <b>Bizpersonemail:</b>
-  <%= @reg.bizpersonemail %>
-</p>
-
-<p>
-  <b>Bizpersonphone:</b>
-  <%= @reg.bizpersonphone %>
-</p>
-
-<p>
-  <b>Fees:</b>
-  <%= @reg.fees %>
-</p>
-
-<p>
-  <b>Abstracttext:</b>
-  <%= @reg.abstracttext %>
-</p>
-
-<p>
-  <b>Abstracttitle:</b>
-  <%= @reg.abstracttitle %>
-</p>
-
-<p>
-  <b>Abstractauthors:</b>
-  <%= @reg.abstractauthors %>
-</p>
+</div>
+</div>
 
 
-<%= link_to 'Edit', edit_reg_path(@reg) %> |
-<%= link_to 'Back', regs_path %>
+<div class="row">
+<div class="span12">
+
+<h1>Symposium Registration Receipt</h1>
+<div id="thanks">
+  <p><%= h @reg.created_at %></p>
+  <p>Thank you for registering, <%= prettyNameFormat %>. <br />Please use this receipt to send in your participant payment and keep a copy for your records.</p>
+</div>
+<div id="eventInfo">
+  <h2>31st Annual Symposium for Reproductive Science
+and Women's Health</h2>
+  <h3>May 17-18, 2012</h3>
+</div>
+<div id="regInfo">
+  <h4>Personal Info</h4>
+  <ul class="unstyled">
+    <li><%= prettyNameFormat %></li>
+    <li><%= h @reg.organization %></li>
+    <li><%= h @reg.status %></li>
+  </ul>
+  <h4>Contact Info</h4>
+  <ul class="unstyled">
+    <li><%= h @reg.email %></li>
+    <li><%= h number_to_phone(@reg.phone, {:area_code => true}) %></li>
+    <li><%= h @reg.address1 %>
+        <%= h @reg.address2 %><br />
+        <%= h @reg.city %>,&nbsp;<%= h @reg.state %>&nbsp;<%= h @reg.zip %></li>
+  </ul>
+  <h4>Registration Info</h4>
+  <ul class="unstyled">
+    <li>Lunch: <%= h going_lunch?(@reg) %></li>
+    <li>Evening session: <%= h going_esession?(@reg) %></li>
+    <li>Partysize for Evening Session: <%= h @reg.partysize %></li>
+    <li>Abstract: <%= getAbstract(@reg) %></li>
+  </ul>
+</div>
+<div id="payment">
+  <h2>Payment instructions</h2>
+  <p><strong>Registration Fees: <%= h number_to_currency(@reg.fees) %></strong></p>
+  <h3>Business officer</h3>
+  <ul class="unstyled">
+    <li><%=h @reg.bizperson %></li>
+    <li><%=h @reg.bizpersonemail %></li>
+    <li><%=h @reg.bizpersonphone %></li>
+  </ul>
+  <h3>On-campus</h3>
+  <p>Please supply this receipt to your departmental business officer for payment by JV.</p>
+  <p>Please send a copy of the completed JV along with a copy of this registration receipt to both Accounts Payable and Darlene Chamberlain, dmcham1@uky.edu, 859-323-5410</p>
+  <p>Please transfer funds into account: 1013164500 before May 11, 2012</p>
+  <p>Departments are to use either a cost center or WBS account number with GL 530503 (registration).  The account for the Symposium to be credited is 1013164500 with GL 408610 (tuition).</p>
+  <p>Questions? Please contact Darlene Chamberlain, dmcham1@uky.edu, 859-323-5410</p>
+  <h3>Off-campus</h3>
+  <p>Mail a copy of this registration receipt along with your payment by May 11, 2012 to:</p>
+  <p>Thomas Curry, Ph.D.<br />
+  Symposium Director<br />
+  C355 Chandler Medical Center<br />
+  800 Rose Street<br />
+  University of Kentucky<br />
+  Lexington, KY<br />
+  40536-0293</p>
+</div>
+
+</div>
+</div>
+
