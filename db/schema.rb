@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401201118) do
+ActiveRecord::Schema.define(:version => 20120401203041) do
 
   create_table "regs", :force => true do |t|
     t.string   "title"
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(:version => 20120401201118) do
   end
 
   create_table "settings", :force => true do |t|
-    t.boolean  "reg_available"
+    t.boolean  "reg_available", :default => true
     t.datetime "dtstart"
     t.datetime "dtend"
     t.integer  "max_capacity"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "users", :force => true do |t|

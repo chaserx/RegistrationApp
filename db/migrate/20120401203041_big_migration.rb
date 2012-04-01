@@ -32,7 +32,7 @@ class BigMigration < ActiveRecord::Migration
 	  end
 
 	  create_table "settings", :force => true do |t|
-	    t.boolean  "reg_available", default => true
+	    t.boolean  "reg_available", :default => true
 	    t.datetime "dtstart"
 	    t.datetime "dtend"
 	    t.integer  "max_capacity"
