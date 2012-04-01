@@ -8,20 +8,26 @@ module RegsHelper
   end
   
   def number_of_attendees_for_lunch
-    return Reg.find(:all, :conditions => "lunch = '1'").size
+    #return Reg.find(:all, :conditions => "lunch = '1'").size
+    return Reg.count(:conditions => 'lunch IS true')
   end
   
+  # def number_of_attendees_for_dinner
+  #   total = 0
+  #   registrations = Reg.find(:all)
+  #   registrations.each{|e| total += e.partysize}
+  #   return total
+  # end
+
   def number_of_attendees_for_dinner
-    total = 0
-    registrations = Reg.find(:all)
-    registrations.each{|e| total += e.partysize}
-    return total
+    return Reg.count(:conditions => 'eveningsession IS true') + Reg.count(:conditions => 'guest IS true')
   end
   
   def number_of_abstracts
     total = 0
-    #return Registration.find_by_sql('SELECT * FROM registrations WHERE abstract_file_name NOT LIKE ""').size
-    return Reg.find(:all, :conditions => "abstract IS NOT NULL").size
+    # return Registration.find_by_sql('SELECT * FROM registrations WHERE abstract_file_name NOT LIKE ""').size
+    # return Reg.find(:all, :conditions => "abstract IS NOT NULL").size
+    return Reg.count(:conditions => "abstract IS NOT NULL")
   end
   
   def dollars_pledged
@@ -108,7 +114,7 @@ module RegsHelper
   end
   
   def getAbstract(arg)
-  		return link_to("#{arg.abstract}", arg.abstract.url) 
+  		return link_to("#{arg.abstract_url}", arg.abstract_url) 
       #return arg.abstract.value
   end
   
