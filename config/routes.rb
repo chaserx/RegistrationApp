@@ -3,8 +3,6 @@ Registrationapp::Application.routes.draw do
 
   resources :regs
 
-  devise_for :admins
-
   devise_for :users
 
   get "content/index"
