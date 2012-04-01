@@ -3,6 +3,6 @@ class RegMailer < ActionMailer::Base
 
   def reg_receipt(registration)
   	@registration = registration
-      mail(:from => "admin@registrationapp.com", :to => "#{registration.firstname} #{registration.lastname} <#{registration.email}>", :subject => "You've been registered")
+      mail(:to => "#{registration.firstname} #{registration.lastname} <#{registration.email}>", :subject => "You've been registered")
   end
 end
