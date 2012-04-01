@@ -117,13 +117,13 @@ class Reg < ActiveRecord::Base
     def set_party_size
       #default to 0
       self.partysize = 0
-      if self.eveningsession?
+      if self.eveningsession? 
         self.partysize += 1
         if self.guest?
           self.partysize += 1
         end
       else
-        self.partysize -= 1
+        self.partysize = 0
       end
 
       # if self.eveningsession == 1 && self.guest == 1
