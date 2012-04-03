@@ -8,7 +8,7 @@ class ReportMailer < ActionMailer::Base
   #
   def send_report(email)
     @greeting = "Hi"
-    
-    mail to: email, subject: "Daily Registrationapp Report"
+    @email = email
+    mail to: @email, subject: "Daily Registrationapp Report"
   end
 end
