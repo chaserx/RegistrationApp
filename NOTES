@@ -1,0 +1,48 @@
+Registrationapp
+
+April 4, 2012
+
+Chase Southard
+Member of the Technical Staff
+Cogitools Software, Inc
+Lexington, KY
+chase.southard@cogitools.com
+
+Registrationapp is a complete rewrite of the Ruby on Rails based software that manages the registration of a small symposium when Chase worked at the University of Kentucky. This code is based on http://github.com/chaserx/reggie2, although rewritten for Rails (v 3.2.x).
+
+## Need
+Need to move the mailer for the report to a redis + resque / resque_mailer
+
+## Development
+MySQL
+
+## Production
+Heroku
+Postgres
+memcache + dalli store
+postmarkapp => sends emails via api
+twitter bootstrap (less)
+html5boilerplate => application_layout
+devise => users (w/ admin attribute)
+carrierwave
+AWS S3
+DNSimple
+Heroku scheduler => send report rake task
+PG Backups
+
+
+## Setup
+git push heroku master
+
+heroku run rake db:migrate
+
+heroku run rake db:seed
+
+heroku ps:scale web=2 worker=0
+
+add memcache
+
+add pg backups
+
+add scheduler 
+
