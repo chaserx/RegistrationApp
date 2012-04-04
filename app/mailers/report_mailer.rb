@@ -1,5 +1,5 @@
 class ReportMailer < ActionMailer::Base
-  helper :reg
+  helper :regs
 
   default from: "admin@registrationapp.com"
 
