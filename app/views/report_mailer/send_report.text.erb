@@ -1,3 +1,18 @@
-ReportMailer#send_report
+---
+Daily Report
+<%= Time.now %>
+---
 
-<%= @greeting %>, find me in app/views/app/views/report_mailer/send_report.text.erb
+
+Total Regisrations: <%= @registrations.size %>
+
+Latest Registrations: 
+<% @latest.each do |e| %>
+	<%= firstname_and_lastname(e) %>
+<% end %>
+
+Lunch Count: <%= number_of_attendees_for_lunch %>
+
+Dinner Count: <%= number_of_attendees_for_dinner %>
+
+Abstract Count: <%= number_of_abstracts %>

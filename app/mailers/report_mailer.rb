@@ -1,3 +1,5 @@
+helper :reg_helper
+
 class ReportMailer < ActionMailer::Base
   default from: "admin@registrationapp.com"
 
@@ -7,8 +9,10 @@ class ReportMailer < ActionMailer::Base
   #   en.report_mailer.send_report.subject
   #
   def send_report(email)
-    @greeting = "Hi"
     @email = email
+    @registrations = Reg.all
+    @latest = Reg.where("created_at >= ?", Time.now.beginning_of_day).all
+
     mail to: @email, subject: "Daily Registrationapp Report"
   end
 end
