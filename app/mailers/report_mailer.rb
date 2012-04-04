@@ -1,6 +1,6 @@
-helper :reg_helper
-
 class ReportMailer < ActionMailer::Base
+  helper :reg_helper
+  
   default from: "admin@registrationapp.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
