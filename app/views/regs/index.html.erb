@@ -24,7 +24,6 @@
         <p><%= link_to regs_url(:csv), :class => "btn" do %><i class="icon-download"></i> Download data (.csv)<%end%> <%= link_to new_reg_path, :class => "btn" do %><i class="icon-plus"></i> Add Registration<%end%></p>
         <table class="table table-striped table-bordered table-condensed">
           <tr>
-            <th>Admin</th>
             <th>ID</th>
             <th>Title</th>
             <th>Firstname</th>
@@ -40,7 +39,6 @@
 
         <% @regs.each do |reg| %>
           <tr>
-            <td><% if reg.admin? %><i class="icon-ok"></i><% end %></td>
             <td><%= link_to reg.id, reg %></td>
             <td><%= reg.title %></td>
             <td><%= reg.firstname %></td>
