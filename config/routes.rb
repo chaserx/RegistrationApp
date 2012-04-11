@@ -1,4 +1,6 @@
 Registrationapp::Application.routes.draw do
+  get "superuser/index"
+
   resources :settings
 
   resources :regs
