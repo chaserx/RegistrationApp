@@ -24,6 +24,8 @@ gem 'mail'
 #gem 'postmark-rails', '>=0.4.1'
 gem 'simple_postmark'
 
+gem 'paul_revere', :git => "git@github.com:chaserx/paul_revere.git"
+
 
 
 # Gems used only for assets and not required
