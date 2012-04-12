@@ -69,7 +69,6 @@
     </div>
 
     <div class="container">
-      <%= render :partial => "announcements/announcement_for_all" %>
       <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">×</a>
