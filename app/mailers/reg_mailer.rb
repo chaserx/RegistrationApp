@@ -14,7 +14,7 @@ class RegMailer < ActionMailer::Base
   		@registrations = Reg.all
 
 	  	@registrations.each do |e|
-	  		mail(:to => e.email, :subject => @announcement.subject, :body => @announcement.announcement_body)
+	  		mail(:from => "admin@registrationapp.com", :to => e.email, :subject => @announcement.subject, :body => @announcement.announcement_body)
 	  	end
   	end
   	@announcement.update_attribute(:sent, true)
