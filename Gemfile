@@ -26,7 +26,7 @@ gem 'simple_postmark'
 
 #gem 'paul_revere', :git => "git@github.com:chaserx/paul_revere.git"
 
-
+gem 'announcements'
 
 # Gems used only for assets and not required
 # in production environments by default.
