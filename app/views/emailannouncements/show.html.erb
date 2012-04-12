@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Announcement body:</b>
+  <%= @emailannouncement.announcement_body %>
+</p>
+
+<p>
+  <b>Sent:</b>
+  <%= @emailannouncement.sent %>
+</p>
+
+
+<%= link_to 'Edit', edit_emailannouncement_path(@emailannouncement) %> |
+<%= link_to 'Back', emailannouncements_path %>

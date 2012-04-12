@@ -1,5 +1,9 @@
 Registrationapp::Application.routes.draw do
+  resources :emailannouncements
+  match 'new_email' => 'emailannouncements#new'
+
   get "superuser/index"
+  match 'superusers' => 'superuser#index'
 
   resources :settings
 
