@@ -46,3 +46,9 @@ add pg backups
 
 add scheduler 
 
+## Add announcement
+
+heroku run console
+
+Announcement.create(:body => "<strong>Warning!</strong> Betta check yo self before ya wreck yo self.")
+

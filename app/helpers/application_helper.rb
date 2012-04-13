@@ -14,5 +14,9 @@ module ApplicationHelper
   content_tag(:li, :class => class_name) do
     link_to link_text, link_path
   end
-end
+  end
+
+  def user_reg_ratio
+    "#{User.count} : #{Reg.count}"
+  end
 end
