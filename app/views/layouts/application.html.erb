@@ -69,13 +69,13 @@
     </div>
 
     <div class="container">
-      <%= announce Announcement.newest, :div_class => "alert alert-block", :hide_message => "X" %>
+      <%= announce Announcement.newest, :hide_message => "×" %>
       <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">×</a>
         <%= msg %>
       </div>
-    <% end %>
+      <% end %>
       
         <%= yield %>
       
