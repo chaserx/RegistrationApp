@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:chaserx/announcements.git
-  revision: 248116fa72c02a02f88e66208561b4452eb81a75
+  revision: 21a1579a4c70cc16fafe34e3532eede9175f7ffe
   specs:
     announcements (0.0.3)
       jquery-rails
@@ -95,7 +95,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     modernizr-rails (2.0.6)
-    multi_json (1.2.0)
+    multi_json (1.3.2)
     multi_xml (0.4.2)
     mysql2 (0.3.11)
     net-scp (1.0.4)
