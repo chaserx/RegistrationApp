@@ -1,14 +1,10 @@
 class ReminderMailer < ActionMailer::Base
-  default from: "admin@registrationapp.com"
+  default from: "admin@registrationapp.com",
+          to: "chase.southard@uky.edu",
+          bcc: User.all.map(&:email)
 
-  def contact_unregistered_users
-  	@users = User.where(reminded: false).all
-    if @users.size > 0
-    	@users.each do |user|
-    			mail(:from => "admin@registrationapp.com", :to => user.email, :subject => "[Symposium Registration] Don't forget to register")
-    			user.update_attribute(:reminded, true)
-    	end
-    end
+  def contact_users
+ 			mail(:from => "admin@registrationapp.com", :subject => "Symposium Registration Reminder")
   end
 
 
