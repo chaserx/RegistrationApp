@@ -5,13 +5,13 @@
 
 <hr />
 <% if @regs.empty? %>
-	<p>Hi there, <%= current_user.email %>!<br />Looks like you need to register.</p>
+	<p>Hi there, <%= current_user.email %>!<br />Looks like you need to register for the symposium.</p>
 	<p>
-		<%= link_to new_reg_path, :class => "btn" do %><i class="icon-plus"></i> Add Registration<%end%>
+		<%= link_to new_reg_path, :class => "btn btn-large" do %><i class="icon-plus"></i> Add Registration<%end%>
 	</p>
 <% else %>
 	<p>
-		<%= link_to new_reg_path, :class => "btn" do %><i class="icon-plus"></i> Add Registration<%end%>
+		<%= link_to new_reg_path, :class => "btn btn-large" do %><i class="icon-plus"></i> Add Registration<%end%>
 	</p>
 <% end %>
 
