@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:chaserx/announcements.git
-  revision: 21a1579a4c70cc16fafe34e3532eede9175f7ffe
+  remote: git://github.com/chaserx/announcements.git
+  revision: 27def2d41b74d8e46622cd41c64cc64cbd6011e5
   specs:
     announcements (0.0.3)
       jquery-rails
