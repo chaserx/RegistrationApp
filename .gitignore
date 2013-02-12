@@ -15,5 +15,6 @@
 /tmp
 .DS_Store
 uploads/*
+
 config/initializers/10_secrets.rb
 config/newrelic.yml
